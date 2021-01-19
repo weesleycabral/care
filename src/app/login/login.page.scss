@@ -1,0 +1,16 @@
+ion-toolbar, ion-header {
+    background-color: #ea4900;
+    --background: #ea4900;
+    color: white;
+  }
+
+  #button {
+    width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 15px;
+    transition: 0.3s ease;
+    --background: #ea4900;
+    font-size: 20px;
+  }

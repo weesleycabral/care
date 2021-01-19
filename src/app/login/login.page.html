@@ -1,18 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <div style="text-align: center; margin-top: 20px; align-items: center; justify-content: center;">
+      <img src="assets/ppa.png" alt="" style="width: 110px; ">
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content fullscreen ion-padding>
+ 
   <form [formGroup]="loginForm" >
-      <ion-col>
-        <ion-row size="4">
-          <ion-text style="color: white; text-align: center!important; font-size: 10px;padding: 0!important;">Olá, seja muito bem-vindo ao,</ion-text>
-        </ion-row>
-      </ion-col>
     <ion-item class="radius" style="margin-bottom: 5.5px; margin-top: 25px; background-color: white;">
-      <ion-input [formControl]="name" type="text" style="font-size: 20px; text-transform: uppercase;" formControlName="login" placeholder="Usuário" required>
+      <ion-input mode="ios" [formControl]="name" type="text" style="font-size: 20px; text-transform: capitalize;" formControlName="login" placeholder="NOME" required>
       </ion-input>
     </ion-item>
     <div style="color: #f4f5f8!important; padding-bottom: 2px!important;">
@@ -21,9 +19,11 @@
     Informe um login válido.
       </ion-text>
     </div>
+    <br>
+    <br>
     <div style="text-align: center;">
-      <ion-button (click)="login()">
-        Entrar
+      <ion-button (click)="login()" id="button">
+       <strong>INICIAR</strong>
       </ion-button>
     </div>
     </form>

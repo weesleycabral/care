@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LottieAnimationViewModule } from 'ng-lottie';
@@ -10,6 +11,7 @@ import { LottieAnimationViewModule } from 'ng-lottie';
 export class AfterPage implements OnInit {
 
   lottieConfig: any;
+  nome: string;
 
   constructor(
     private modalController: ModalController
@@ -24,9 +26,15 @@ export class AfterPage implements OnInit {
    }
 
   ngOnInit() {
+    this.load();
     setTimeout(() => {
       this.modalController.dismiss();
     }, 2700);
+  }
+
+  load() {
+    const data = localStorage.getItem('nome');
+    this.nome = JSON.parse(data);
   }
 
 }
