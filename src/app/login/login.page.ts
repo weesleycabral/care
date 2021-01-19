@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.menu.enable(false);
+    this.menu.enable(false);
     this.validation();
     this.load();
     console.log(this.nome)
@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
 
   login() {
       this.presentModal();
-      this.route.navigate(['folder/inbox'])
+      this.route.navigate(['folder/inbox']);
       this.save();
   }
 

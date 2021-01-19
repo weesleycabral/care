@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'after',
     loadChildren: () => import('./modal/after/after.module').then( m => m.AfterPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   }
 ];
 
