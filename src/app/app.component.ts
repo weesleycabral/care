@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,44 +12,28 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  nome: string;
   public appPages = [
     {
-      title: 'Inbox',
+      title: 'Home',
       url: '/folder/Inbox',
-      icon: 'mail'
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
-    },
-    {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
-    },
-    {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Configurações',
+      url: '',
+      icon: 'construct'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private alertController: AlertController,
+    private router: Router,
+    private toastController: ToastController
   ) {
     this.initializeApp();
   }
@@ -61,9 +46,54 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.load();
+    console.log(this.nome);
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  }
+
+  async alertLogout() {
+    const alert = await this.alertController.create({
+      header: 'PPA Care!',
+      message: 'Deseja encerrar sua sessão?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Sim',
+          handler: () => {
+            this.logout();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  logout() {
+    this.router.navigate(['/login']);
+    this.presentToast('Desconectado com sucesso! Volte sempre! :D', 'success');
+    // localStorage.clear();
+  }
+
+  async presentToast(m: string, c: string) {
+    const toast = await this.toastController.create({
+      message: `${m}`,
+      color: `${c}`,
+      duration: 2000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
+  load() {
+    const data = localStorage.getItem('nome');
+    this.nome = JSON.parse(data);
   }
 }

@@ -1,6 +1,6 @@
-ion-menu-button {
-  color: var(--ion-color-primary);
-}
+// ion-menu-button {
+//   color: var(--ion-color-primary);
+// }
 
 #container {
   text-align: center;
@@ -25,4 +25,21 @@ ion-menu-button {
 
 #container a {
   text-decoration: none;
+}
+
+#button {
+  width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 15px;
+  transition: 0.3s ease;
+}
+
+.green {
+  --background: green;
+}
+
+.red {
+  --background: red;
 }

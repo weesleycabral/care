@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>PPA Care</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +14,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div style="text-align: center; margin-top: 350px; border-radius: 50%;">
+    <ion-button id="button" (click)="ligar()"  [ngClass]="{'red' : toggle, 'green': !toggle}">
+      <ion-icon name="power" style="font-size: 50px;"></ion-icon>
+    </ion-button>
   </div>
 </ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form [formGroup]="loginForm" >
+      <ion-col>
+        <ion-row size="4">
+          <ion-text style="color: white; text-align: center!important; font-size: 10px;padding: 0!important;">Olá, seja muito bem-vindo ao,</ion-text>
+        </ion-row>
+      </ion-col>
+    <ion-item class="radius" style="margin-bottom: 5.5px; margin-top: 25px; background-color: white;">
+      <ion-input [formControl]="name" type="text" style="font-size: 20px; text-transform: uppercase;" formControlName="login" placeholder="Usuário" required>
+      </ion-input>
+    </ion-item>
+    <div style="color: #f4f5f8!important; padding-bottom: 2px!important;">
+      <ion-text color="danger"  style=" padding-bottom: 10px!important;" *ngIf="loginForm.get('login').hasError('required') && loginForm.get('login').touched"
+    style="text-align: left!important" lines="none">
+    Informe um login válido.
+      </ion-text>
+    </div>
+    <div style="text-align: center;">
+      <ion-button (click)="login()">
+        Entrar
+      </ion-button>
+    </div>
+    </form>
+</ion-content>
